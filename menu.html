@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Menu - Bilal Bank ATM</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            background-color: #002B49; /* Dark Blue background */
+            color: #ffffff; /* White text */
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            text-align: center;
+        }
+
+        .header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+            background-color: #000000; /* Black background */
+            padding: 10px;
+        }
+
+        .header img {
+            height: 120px;
+        }
+
+        .welcome-message {
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            text-align: center;
+            margin-top: 20px;
+            background-color: #000000; /* Black banner */
+            padding: 10px;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .button {
+            width: 45%;
+            padding: 20px;
+            margin: 10px;
+            font-size: 20px;
+            color: #ffffff; /* White text */
+            background-color: #002B49; /* Dark Blue background for buttons */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background-color: #001f33; /* Darker blue on hover */
+        }
+
+        .button:disabled {
+            background-color: #ccc; /* Disabled button in grey */
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="assets/logo.png" alt="ATM Logo">
+        </div>
+
+        <div class="welcome-message">
+            <h3>WELCOME</h3>
+        </div>
+
+        <div class="button-container">
+            <button class="button">Deposit</button>
+            <a class="button" href="withdraw.html">Withdraw</a>
+            <button class="button">Transfer</button>
+            <button class="button">Balance Enquiry</button>
+            <button class="button">Change PIN</button>
+            <button class="button" onclick="window.location.href='index.html'">Exit</button>
+        </div>
+    </div>
+</body>
+
+</html>

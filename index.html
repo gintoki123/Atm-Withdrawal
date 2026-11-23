@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATM PIN Entry</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: 'Arial', sans-serif;
+            background-color: #002B49; /* Dark Blue background */
+            color: #ffffff; /* White text */
+            margin: 0;
+        }
+
+        .container {
+            width: 80%;
+            max-width: 600px;
+            display: flex;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+            overflow: hidden;
+        }
+
+        .left-section {
+            width: 55%;
+            padding: 40px;
+            background-color: #002B49; /* Dark Blue background */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .left-section h2 {
+            font-size: 30px;
+            font-weight: 600;
+            color: white;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .pin-input input[type="password"] {
+            width: 100%;
+            padding: 18px;
+            font-size: 20px;
+            border: 2px solid #005080;
+            border-radius: 30px;
+            outline: none;
+            color: #005080; /* Lighter blue for input text */
+            text-align: center;
+            background-color: #e6f2ff; /* Slightly lighter background for input */
+        }
+
+        .pin-input input[type="password"]::placeholder {
+            color: #b0b0b0;
+        }
+
+        .right-section {
+            width: 45%;
+            background-color: #111; /* Dark background */
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+        }
+
+        .right-section img {
+            width: 120px;
+            height: 120px;
+            margin-bottom: 20px;
+        }
+
+        .right-section h3 {
+            font-size: 24px;
+            font-weight: 600;
+            color: white;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 12px 30px;
+            font-size: 18px;
+            background-color: #005080;
+            color: #fff;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        button:hover {
+            background-color: #003d5c;
+            transform: scale(1.05);
+        }
+    </style>
+    <script>
+        function validatePIN() {
+            const pinInput = document.getElementById("pinCode").value;
+            if (pinInput.length === 4 && !isNaN(pinInput)) {
+                window.location.href = "menu.html";
+            } else {
+                alert("Please enter a valid 4-digit PIN.");
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="left-section">
+            <h2>Please Enter Your PIN Code</h2>
+            <div class="pin-input">
+                <input type="password" id="pinCode" placeholder="PIN Code" maxlength="4" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+            </div>
+            <button onclick="validatePIN()">Enter</button>
+        </div>
+        <div class="right-section">
+            <img src="assets/logo.png" alt="ATM Logo">
+            <h3>Welcome to Bilal Bank</h3>
+        </div>
+    </div>
+</body>
+
+</html>

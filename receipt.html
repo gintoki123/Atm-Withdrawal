@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Withdrawal Success - Bilal Bank</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            background-color: #000000;
+            color: #00ff00;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            width: 90%;
+            max-width: 600px;
+            background-color: #00ff00;
+            color: #000000;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .logo {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 20px;
+        }
+
+        .message {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .info {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        .button {
+            width: 100%;
+            padding: 15px;
+            font-size: 18px;
+            color: #00ff00;
+            background-color: #000000;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .button:hover {
+            background-color: #00ff00;
+            color: #000000;
+        }
+
+        @media (max-width: 768px) {
+            .button {
+                font-size: 16px;
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <!-- Updated logo -->
+        <img src="assets/logo.png"
+            alt="ATM Logo" class="logo">
+
+        <div class="message">Your cash withdrawal was successful!</div>
+        <div class="info">Money Withdrawn: $<span id="money-amount"></span></div>
+        <div class="info">Previous Balance: $<span id="balance"></span></div>
+        <hr style="width: 100%; border: 1px solid #000; margin: 20px 0;">
+        <div class="info">Remaining Balance: $<span id="remaining-balance"></span></div>
+
+        <button class="button" onclick="downloadReceipt()">Take Withdrawal Receipt</button>
+        <button class="button" onclick="window.location.href='menu.html'">Leave Without Receipt</button>
+    </div>
+
+    <script>
+        // Fetch data from localStorage
+        const withdrawAmount = parseInt(localStorage.getItem("withdrawAmount")) || 0;
+        const balance = parseInt(localStorage.getItem("balance")) || 0;
+
+        // Display values
+        document.getElementById("money-amount").textContent = withdrawAmount;
+        document.getElementById("balance").textContent = balance + withdrawAmount; // Previous balance
+        document.getElementById("remaining-balance").textContent = balance;
+
+        // Receipt download simulation
+        function downloadReceipt() {
+            const receiptContent = `
+                Bilal Bank ATM Receipt
+                ----------------------------
+                Amount Withdrawn: $${withdrawAmount}
+                Previous Balance: $${balance + withdrawAmount}
+                Remaining Balance: $${balance}
+                ----------------------------
+                Thank you for banking with us!
+            `;
+            const blob = new Blob([receiptContent], { type: "text/plain" });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement("a");
+            link.href = url;
+            link.download = "ATM_Receipt.txt";
+            link.click();
+            URL.revokeObjectURL(url);
+        }
+    </script>
+
+</body>
+
+</html>
